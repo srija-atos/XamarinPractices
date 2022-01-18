@@ -259,6 +259,7 @@ namespace Student_Management_1.ViewModel
         {
             get
             {
+
                 return new Command(async () =>
                 {
                     try
