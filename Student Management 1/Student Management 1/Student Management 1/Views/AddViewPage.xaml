@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Student_Management_1"
+            
+             xmlns:uieffects="clr-namespace:Student_Management_1.UIEffects"
+             x:Class="Student_Management_1.AddViewPage"
+>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveCommand}" />
+        <ToolbarItem Text="Delete" Command="{Binding DeleteCommand}"/>
+    </ContentPage.ToolbarItems>
+
+
+
+
+                    <StackLayout Padding="10" Margin="10">
+
+
+            <Entry Text="{Binding FirstName, Mode=TwoWay}" Placeholder="FirstName" >
+              
+            </Entry>
+            <Entry Text="{Binding  LastName,Mode=TwoWay}" Placeholder="LastName" ></Entry>
+            <DatePicker Date="{Binding  DateOfBirth , Mode=TwoWay}"  Format="dd-MM-yyyy" MinimumDate="01-01-1995" MaximumDate="01-01-2002"></DatePicker>
+            <Editor Text="{Binding Address, Mode=TwoWay}" Placeholder="Address" MaxLength="30" ></Editor>
+
+            <Picker ItemsSource="{Binding  DepartmentList}"
+                    SelectedIndex="{Binding DepartmentId}"
+                    Title="Department"
+                    ItemDisplayBinding="{Binding DepartmentName}"
+                />
+
+            <RadioButton IsChecked="{Binding RdbFemale, Mode=TwoWay}" Content="Female"
+                     GroupName="Gender" />
+            <RadioButton IsChecked="{Binding RdbMale,Mode=TwoWay}"  Content="Male"
+                     GroupName="Gender"/>
+        </StackLayout>
+   
+</ContentPage>

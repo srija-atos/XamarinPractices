@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:uieffects="clr-namespace:Student_Management_1.UIEffects"
+             x:Class="Student_Management_1.SearchBarPage1"
+             Title="List">
+   
+    
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="Add"
+                     Clicked="btnAddNote_Clicked"/>
+        </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+
+        <StackLayout>
+
+
+            <SearchBar x:Name="searchBar" 
+                       Placeholder="Search Name"
+                       TextChanged="SearchBar_TextChanged" 
+                       SearchButtonPressed="OnSearchBarButtonPressed" 
+                       PlaceholderColor="Black"
+                       />
+
+            <StackLayout>
+                <ListView x:Name="list" Margin="0, 0"
+HasUnevenRows="True"
+SeparatorVisibility="None"
+SeparatorColor="Blue"
+IsPullToRefreshEnabled="True"
+IsRefreshing="False"
+
+RefreshControlColor="Red"
+          ItemTapped="list_ItemTapped">                 
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Delete" Clicked="MenuItemDelete" BindingContext="{Binding .}" ></MenuItem>
+                                    <MenuItem Text="Edit" Clicked="MenuItemEdit" BindingContext="{Binding .}" ></MenuItem>
+                                </ViewCell.ContextActions>
+                                <Frame CornerRadius="9" HasShadow="True" BindingContext="{Binding .}" >
+                                    <Grid Padding="2" >
+                                       
+                                        
+                                        <Label Text="{Binding ID}" TextColor="Black" Padding="0.2"/>
+
+
+
+                                        <Label Text="{Binding FirstName}" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+
+
+                                        <Label Grid.Column="1" Text="{Binding LastName}" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                                        
+
+
+
+
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+
+
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
